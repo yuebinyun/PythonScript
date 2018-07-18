@@ -111,7 +111,33 @@ cd /opt/janus/bin/
 
 请留意输出日志，如果出现 `error` 信息，可能是出现了问题。
 
-### Janus 客户端 Demo
+
+### 信令交互接口测试
+目前信令交互使用 `WebSockets` 协议，子协议是 `janus-protocol`，默认端口是 8188.
+
+使用 python 脚本做连通性测试。
+```
+// 1. 安装 WebSockets python 库
+pip install websocket-client
+
+// 2. 使用 websocket-client 自带测试脚本
+pwsdump.py <ws://ip:8188> -s "janus-protocol"
+
+// 3. 输出日志如下，表示连通性 ok
+//  wsdump.py ws://103.229.215.202:8188 -s "janus-protocol"
+//  Press Ctrl+C to quit
+//  > test
+//  < {
+//     "janus": "error",
+//     "error": {
+//        "code": 456,
+//        "reason": "Missing mandatory element (transaction)"
+//     }
+//  }
+```
+
+
+### Janus Web 客户端
 
 Janus 源码中自带提供测试的 web app。
 路径：/opt/janus/bin/html
@@ -187,6 +213,23 @@ turnserver -L <公网可访问 IP> -o -a -b -f -r demo -v
 
 请仔细阅读启动日志，谢谢。
 
+### 连通性测试
+
+``` 
+// 1. 安装 python app pystun
+pip install pystun
+
+// 2. 使用，如果运行出错，则表明 python 版本太高
+// 作者已停更....
+pythun -d -H <ip> -P <port>
+
+// 3. 输出，如果输出如下，表明连通性 ok
+// .....
+// DEBUG:pystun:recvfrom:('<ip>', <port>)
+// .....
+// ......
+// ........
+```
 
 ## 0x04 End
 `Thanks!!`
