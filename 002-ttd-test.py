@@ -19,7 +19,7 @@ class Test:
         self.dict = {}
 
     def read_db(self):
-        con = sqlite3.connect('omega.db')
+        con = sqlite3.connect('tdd-omega.db')
         con.row_factory = sqlite3.Row
         cur = con.cursor()
         cur.execute("SELECT Q,A from QA")
@@ -33,7 +33,7 @@ class Test:
         print("题库记录", len(self.dict))
 
     def save_db(self):
-        con = sqlite3.connect('omega.db')
+        con = sqlite3.connect('tdd-omega.db')
         sql = 'DELETE FROM QA'
         cur = con.cursor()
         cur.execute(sql)
@@ -89,7 +89,7 @@ class Test:
             print('Windows...')
 
     def delete_record(self):
-        conn = sqlite3.connect('omega.db')
+        conn = sqlite3.connect('tdd-omega.db')
         c = conn.cursor()
         c.execute("DELETE from QA where Q='';")
         conn.commit()

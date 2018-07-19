@@ -7,7 +7,7 @@
 2. 自动点击答案选项
 3. 匹配已有题库
 4. 在线搜索答案，
-5. 保存问题和答案到数据库 omega.db
+5. 保存问题和答案到数据库 tdd-omega.db
 """
 
 import os
@@ -215,7 +215,7 @@ class SimpleAndroidTests(unittest.TestCase):
         # sleep(5)
 
     def read_db(self):
-        con = sqlite3.connect('omega.db')
+        con = sqlite3.connect('tdd-omega.db')
         con.row_factory = sqlite3.Row
         cur = con.cursor()
         cur.execute("SELECT Q,A from QA")
@@ -227,7 +227,7 @@ class SimpleAndroidTests(unittest.TestCase):
         print("题库已有数据：", len(type(self).dict))
 
     def add_record(self, q, a):
-        con = sqlite3.connect('omega.db')
+        con = sqlite3.connect('tdd-omega.db')
         cur = con.cursor()
         sql = "INSERT INTO QA ('Q', 'A') VALUES ('%s', '%s')" % (q, a);
         cur.execute(sql)
