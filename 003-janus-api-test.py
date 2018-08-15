@@ -109,8 +109,8 @@ def main():
     body = {"room": room, "request": "destroy"}
     msg = {"janus": "message", "transaction": t_generator(), "handle_id": handle_id, "session_id": session_id,
            "body": body}
-    ws.send(json.dumps(msg))
-    print("destroy room ack: ", json.loads(recv_ws()))
+#    ws.send(json.dumps(msg))
+#    print("destroy room ack: ", json.loads(recv_ws()))
     time.sleep(1)
 
     msg = {"janus": "detach", "transaction": t_generator(), "handle_id": handle_id, "session_id": session_id}
