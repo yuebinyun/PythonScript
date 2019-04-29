@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+####################################################################
+####  pip install websocket_client
+####################################################################
+
 import requests
 import time
 import json
